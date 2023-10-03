@@ -8,7 +8,8 @@ use App\Models\Category;
 class HomeController extends Controller
 {
     public function __invoke() {
-        $categories = Category::get();
+
+        $categories = Category::tree()->get()->toTree();
         return view('Home', ['categories' => $categories]);
     }
 }
